@@ -1,0 +1,37 @@
+<div class="cart-container">
+  <h2>Carrito de Compras</h2>
+
+  @if(cartItems.length>0){
+    <div>
+      @for(item of cartItems; track item.bookId){
+        <div class="cart-item">
+          <div class="item-info">
+            <span class="item-title">{{ item.bookName }}</span>
+            <span class="item-quantity">Cantidad: {{ item.quantity }}</span>
+            <span class="item-price">Precio: {{ item.price | currency }}</span>
+          </div>
+          <button class="remove-button" (click)="removeItem(item.bookId)">Eliminar</button>
+        </div>
+
+      }
+
+      <div class="cart-total">
+        <strong>Total: {{ total | currency }}</strong>
+      </div>
+      <div class="cart-actions">
+        <button class="clear-cart-button" (click)="clearCart()">Vaciar Carrito</button>
+        <button class="paypal-button"
+        [disabled]="loading"
+        [class.spinner]="loading"
+        (click)="proceedToCheckout()">
+          <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal Checkout">
+        </button>
+      </div>
+
+    </div>
+  }@else{
+    <p>Tu carrito está vacío.</p>
+  }
+
+
+</div>

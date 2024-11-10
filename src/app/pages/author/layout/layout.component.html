@@ -1,0 +1,52 @@
+<app-navbar />
+
+<div class="layout-dashboard">
+
+  <button
+    class="sidebar-toggle-btn"
+    [class.active]="isSidebarActive"
+    (click)="toggleSidebar()"
+  >
+    <span
+      class="navbar-toggler-icon"
+      [ngClass]="{
+        'icon-white': !isSidebarActive,
+        'icon-black': isSidebarActive
+      }"
+    >
+    </span>
+  </button>
+
+  <div class="layout-sidebar" [class.collapsed]="isSidebarActive">
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="/author/books/list" routerLinkActive="active">
+            <i class="fas fa-book"></i> Libros
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/author/categories/list" routerLinkActive="active">
+            <i class="fas fa-list-alt"></i> Categorías
+          </a>
+        </li>
+        <li>
+          <a routerLink="/author/reports/sales" routerLinkActive="active">
+            <i class="fas fa-chart-bar"></i> Reportes de Ventas
+          </a>
+        </li>
+
+
+      </ul>
+    </nav>
+  </div>
+
+
+  <div class="layout-content">
+    <router-outlet />
+  </div>
+</div>
+
+
+<app-footer />

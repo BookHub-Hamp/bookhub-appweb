@@ -1,0 +1,71 @@
+@if(books) {
+<h2>Lista de Libros</h2>
+
+<div class="table-controls">
+  <button mat-raised-button color="primary" (click)="createNewBook()">
+    Nuevo Libro
+  </button>
+
+  <mat-form-field class="filter-input" appearance="outline">
+    <mat-label>Buscar por título</mat-label>
+    <input matInput [(ngModel)]="filterText" (input)="applyFilter($event)" />
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="filteredBooks" class="mat-table">
+  <ng-container matColumnDef="cover">
+    <mat-header-cell *matHeaderCellDef> Portada </mat-header-cell>
+    <mat-cell *matCellDef="let book">
+      <img [src]="book.coverPath | apiImg" alt="Cover" class="book-cover-img" />
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef> Título </mat-header-cell>
+    <mat-cell *matCellDef="let book"> {{ book.title }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="authorName">
+    <mat-header-cell *matHeaderCellDef> Autor </mat-header-cell>
+    <mat-cell *matCellDef="let book"> {{ book.authorName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="categoryName">
+    <mat-header-cell *matHeaderCellDef> Categoría </mat-header-cell>
+    <mat-cell *matCellDef="let book"> {{ book.categoryName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+    <mat-cell *matCellDef="let book"> {{ book.price | currency }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let book">
+      <div class="button-group">
+        <button mat-raised-button color="accent" (click)="editBook(book.id)">
+          Editar
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteBook(book.id)">
+          Eliminar
+        </button>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator
+  [length]="totalElements"
+  [pageSize]="pageSize"
+  [pageIndex]="pageIndex"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
+} @else {
+<p>No hay libros registrados</p>
+}

@@ -1,0 +1,44 @@
+<div class="history-container">
+  <h2>Historial de Compras</h2>
+  @if(purchases.length>0){
+  <div>
+    <div class="purchase-grid">
+      <div class="purchase-card">
+        @for(purchase of purchases; track purchase.id){
+
+        <div class="purchase-info">
+          <div class="purchase-header">
+            <span class="purchase-date"
+              >Fecha: {{ purchase.createdAt | date }}</span
+            >
+            <span
+              class="payment-status"
+              [ngClass]="getPaymentStatusClass(purchase.paymentStatus)"
+            >
+              Estado: {{ purchase.paymentStatus }}
+            </span>
+          </div>
+          <div class="purchase-total">
+            Total: {{ purchase.total | currency }}
+          </div>
+        </div>
+
+        <div class="purchase-items">
+          <h3>Libros Comprados:</h3>
+          @for(item of purchase.items; track item.bookId){
+          <div class="purchase-item">
+            <span>{{ item.bookTitle }}</span>
+            <span>Cantidad: {{ item.quantity }}</span>
+            <span>Precio: {{ item.price | currency }}</span>
+          </div>
+          }
+        </div>
+
+        }
+      </div>
+    </div>
+  </div>
+  }@else {
+  <p>No se encontraron compras en el historial.</p>
+  }
+</div>

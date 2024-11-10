@@ -1,0 +1,71 @@
+.book-info-page-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.book-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+app-book-details, app-book-reviews {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+app-book-details {
+  max-width: 100%; /* Full width on mobile */
+}
+
+app-book-reviews {
+  max-width: 100%; /* Full width on mobile */
+}
+
+@media (min-width: 768px) {
+  .book-content {
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  app-book-details {
+    max-width: 65%; /* Slightly larger for desktop */
+  }
+
+  app-book-reviews {
+    max-width: 35%; /* Slightly smaller for desktop */
+  }
+}
+
+/* Estilos adicionales para una mejor apariencia en pantallas pequeñas */
+@media (max-width: 767px) {
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .book-content {
+    padding: 0;
+  }
+
+  app-book-details, app-book-reviews {
+    padding: 15px;
+  }
+
+  .book-content > * {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+}

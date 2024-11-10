@@ -1,0 +1,36 @@
+@if(book){
+  <mat-card class="book-details-card">
+    <!-- Imagen del libro a la izquierda (o arriba en pantallas pequeñas) -->
+    <img mat-card-image class="book-cover" [src]="book.coverPath | apiImg" [alt]="book.title">
+
+    <!-- Contenido de los detalles a la derecha (o abajo en pantallas pequeñas) -->
+    <div class="book-content">
+      <mat-card-title class="book-title">{{ book.title }}</mat-card-title>
+      <mat-card-subtitle class="book-subtitle">Autor: {{ book.authorName }} - Categoría: {{ book.categoryName }}</mat-card-subtitle>
+
+      <mat-card-content>
+        <p class="book-description">{{ book.description }}</p>
+        <p class="book-price"><strong>Precio:</strong> {{ book.price | currency }}</p>
+        <p class="book-date"><strong>Publicado el:</strong> {{ book.createdAt | date }}</p>
+        <p class="book-date"><strong>Última actualización:</strong> {{ book.updatedAt | date }}</p>
+      </mat-card-content>
+
+
+      <div class="button-group">
+        @if(isAuthenticated && isCustomer) {
+          <!--<a [href]="book.filePath" target="_blank" class="download-link auth-required">Descargar libro</a>-->
+          <button class="add-to-cart-button auth-required" (click)="addToCart()">Agregar al carrito</button>
+          <button class="back-button" (click)="goBackToHome()">Regresar a Home</button>
+        }@else {
+          <button class="back-button" (click)="goBackToHome()">Regresar a Home</button>
+        }
+
+      </div>
+
+    </div>
+  </mat-card>
+
+}@else{
+  <p class="no-book-message">No se encontró el libro</p>
+
+}

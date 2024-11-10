@@ -1,0 +1,17 @@
+<mat-card class="book-card">
+  <mat-card-header>
+    <mat-card-title>{{ book.title }}</mat-card-title>
+    <mat-card-subtitle>Autor: {{ book.authorName }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image [src]="book.coverPath | apiImg" [alt]="book.title">
+
+  <mat-card-content>
+    <p>{{ book.description }}</p>
+    <p>Precio: {{ book.price }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="viewDetails()">Ver detalles</button>
+  </mat-card-actions>
+</mat-card>

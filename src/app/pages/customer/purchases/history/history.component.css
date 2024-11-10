@@ -1,0 +1,88 @@
+.history-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.purchase-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 20px; /* Separación entre tarjetas */
+  border: 1px solid #e0e0e0;
+}
+
+.purchase-card:not(:last-child) {
+  margin-bottom: 30px; /* Más separación entre tarjetas */
+}
+
+.purchase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.purchase-id,
+.purchase-date {
+  font-weight: bold;
+  color: #555;
+}
+
+.payment-status {
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.status-paid {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.status-pending {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.status-failed {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.purchase-total {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.purchase-items h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+.purchase-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: #666;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.purchase-item:last-child {
+  border-bottom: none;
+}
